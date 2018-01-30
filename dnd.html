@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#div1, #div2, #div3 {
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+/* Prevent the text contents of draggable elements from being selectable. */
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.column {
+  height: 150px;
+  width: 150px;
+  float: left;
+  border: 2px solid #666666;
+  background-color: #ccc;
+  margin-right: 5px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+}
+.column header {
+  color: #fff;
+  text-shadow: #000 0 1px;
+  box-shadow: 5px;
+  padding: 5px;
+  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -webkit-gradient(linear, left top, right top,
+                               color-stop(0, rgb(0,0,0)),
+                               color-stop(0.50, rgb(79,79,79)),
+                               color-stop(1, rgb(21,21,21)));
+  background: -webkit-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  background: -ms-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
+  border-bottom: 1px solid #ddd;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -ms-border-radius-topleft: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -ms-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>Drag the Box back and forth between the 3 columns (div elements).</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<div class="column" draggable="true" ondragstart="drag(event)" id="drag1"><header>A</header></div>
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>
+</html>
