@@ -4,11 +4,12 @@
 <style>
 #div1, #div2, #div3 {
     float: left;
-    width: 200px;
-    height: 200px;
+    width: 30%;
+    height: 600px;
     margin: 10px;
     padding: 10px;
-    border: 1px solid black;
+	border: 2px solid black;
+	align: center;
 }
 /* Prevent the text contents of draggable elements from being selectable. */
 [draggable] {
@@ -22,8 +23,8 @@
 }
 .column {
   height: 150px;
-  width: 150px;
-  float: left;
+  width: 280px;
+  float: left		;
   border: 2px solid #666666;
   background-color: #ccc;
   margin-right: 5px;
@@ -36,6 +37,7 @@
   box-shadow: inset 0 0 3px #000;
   text-align: center;
   cursor: move;
+  padding-top: 15px;
 }
 .column header {
   color: #fff;
@@ -82,7 +84,8 @@ function drop(ev) {
 <p>Drag the Box back and forth between the 3 columns (div elements).</p>
 
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-	<div class="column" draggable="true" ondragstart="drag(event)" id="drag1"><header>A</header></div>
+	<div class="column" draggable="true" ondragstart="drag(event)" id="drag1">
+	As a user, I want to be able to move PBIs from column to column, so that the progressed of the PBI is being tracked visibly.</div>
 </div>
 
 <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
